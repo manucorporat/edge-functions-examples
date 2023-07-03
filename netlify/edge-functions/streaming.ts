@@ -8,15 +8,13 @@ export default async () => {
     let index = 0;
     while(true) {
       await delay(1000);
-      await writer.write(encoder.encode(`data2: Hello ${index++}\n\n`))
-      index++;
-
+      await writer.write(encoder.encode(`data3: Hello ${index++}\n\n`))
     }
   }
   run();
   return new Response(readable, {
     headers: {
-      "Content-Type": "text/event-stream",
+      "Content-Type": "application/qwik-json",
     },
   });
 };
