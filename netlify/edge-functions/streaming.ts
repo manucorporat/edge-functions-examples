@@ -1,4 +1,11 @@
 
+async function* generator() {
+  let index = 0;
+  while(true) {
+    await delay(1000);
+    yield {version: 2, index: index++};
+  }
+}
 export default async (request: Request) => {
   await delay(50);
 
@@ -8,10 +15,9 @@ export default async (request: Request) => {
   const encoder = new TextEncoder();
   const writer = writable.getWriter();
   async function run() {
-    let index = 0;
-    while(true) {
-      await delay(1000);
-      await writer.write(encoder.encode(JSON.stringify({version: 1, index: index++, json})));
+    const gen = generator();
+    for await (const item of gen) {
+      await writer.write(encoder.encode(JSON.stringify(item)));
     }
   }
   run();
