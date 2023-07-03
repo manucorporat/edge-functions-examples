@@ -17,7 +17,7 @@ export default async (request: Request) => {
   async function run() {
     const gen = generator();
     for await (const item of gen) {
-      await writer.write(encoder.encode(JSON.stringify(item)));
+      await writer.write(encoder.encode(JSON.stringify(item)+'\n'));
     }
   }
   run();
