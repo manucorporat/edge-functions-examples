@@ -21,7 +21,6 @@ export default async (request: Request) => {
     }
   }
   run();
-  await delay(200);
 
   return new Response(readable, {
     headers: {

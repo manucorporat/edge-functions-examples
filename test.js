@@ -1,7 +1,7 @@
 
 async function main() {
-  // const url = 'https://qwik-city-e2e.netlify.app/app/functions/?qfunc=f4zgEiB8wIc';
-  const url = 'https://exquisite-bublanina-029058.netlify.app/streaming';
+  const url = 'https://qwik-city-e2e.netlify.app/app/functions/?qfunc=f4zgEiB8wIc';
+  // const url = 'https://exquisite-bublanina-029058.netlify.app/streaming';
   const res = await fetch(url, {
       method: 'POST',
       headers: {
