@@ -1,4 +1,3 @@
-import type { Context } from "https://edge.netlify.com";
 
 export default async () => {
   const { readable, writable } = new TransformStream<Uint8Array>();
@@ -8,13 +7,13 @@ export default async () => {
     let index = 0;
     while(true) {
       await delay(1000);
-      await writer.write(encoder.encode(`data3: Hello ${index++}\n\n`))
+      await writer.write(encoder.encode(`data4: Hello ${index++}`))
     }
   }
   run();
   return new Response(readable, {
     headers: {
-      "Content-Type": "application/qwik-json",
+      "Content-Type": "text/qwik-json-stream",
     },
   });
 };
